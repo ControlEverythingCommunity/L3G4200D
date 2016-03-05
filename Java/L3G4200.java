@@ -54,8 +54,8 @@ public class L3G4200
 		}
 		
 		// Output data to screen
-		System.out.printf("X-Axis of Rotation : %d %n", xGyro);
-		System.out.printf("Y-Axis of Rotation : %d %n", yGyro);
-		System.out.printf("Z-Axis of Rotation : %d %n", zGyro);
+		System.out.printf("Rotation in X-Axis : %d %n", xGyro);
+		System.out.printf("Rotation in Y-Axis : %d %n", yGyro);
+		System.out.printf("Rotation in Z-Axis : %d %n", zGyro);
 	}
 }
