@@ -19,12 +19,12 @@ Download (or git pull) the code in pi.
 
 Compile the java program.
 ```cpp
-$> pi4j L3G4200.java
+$> pi4j L3G4200D.java
 ```
 
 Run the java program as.
 ```cpp
-$> pi4j L3G4200
+$> pi4j L3G4200D
 ```
 
 ##Python 
@@ -35,7 +35,7 @@ https://pypi.python.org/pypi/smbus-cffi/0.5.1
 Download (or git pull) the code in pi. Run the program
 
 ```cpp
-$> python L3G4200.py
+$> python L3G4200D.py
 ```
 
 The code output is the raw values of angular acceleration in X, Y and Z axis.
