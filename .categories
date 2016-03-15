@@ -1,3 +1,5 @@
 lang:java
 lang:python
+lang:arduino
+lang:particle
 sku: L3G4200D_I2CS
