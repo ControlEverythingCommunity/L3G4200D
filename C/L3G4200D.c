@@ -36,7 +36,7 @@ void main()
 
 	// Read 6 bytes of data
 	// lsb first
-	// Read xGyro msb data from register(0x28)
+	// Read xGyro lsb data from register(0x28)
 	char reg[1] = {0x28};
 	write(file, reg, 1);
 	char data[1] = {0};
@@ -47,31 +47,31 @@ void main()
 	}
 	char data_0 = data[0];
 
-	// Read xGyro lsb data from register(0x29)
+	// Read xGyro msb data from register(0x29)
 	reg[0] = 0x29;
 	write(file, reg, 1);
 	read(file, data, 1);
 	char data_1 = data[0];
 
-	// Read yGyro msb data from register(0x2A)
+	// Read yGyro lsb data from register(0x2A)
 	reg[0] = 0x2A;
 	write(file, reg, 1);
 	read(file, data, 1);
 	char data_2 = data[0];
 
-	// Read yGyro lsb data from register(0x2B)
+	// Read yGyro msb data from register(0x2B)
 	reg[0] = 0x2B;
 	write(file, reg, 1);
 	read(file, data, 1);
 	char data_3 = data[0];
 
-	// Read zGyro msb data from register(0x2C)
+	// Read zGyro lsb data from register(0x2C)
 	reg[0] = 0x2C;
 	write(file, reg, 1);
 	read(file, data, 1);
 	char data_4 = data[0];
 
-	// Read zGyro lsb data from register(0x2D)
+	// Read zGyro msb data from register(0x2D)
 	reg[0] = 0x2D;
 	write(file, reg, 1);
 	read(file, data, 1);
