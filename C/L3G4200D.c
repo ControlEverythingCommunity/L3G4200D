@@ -42,7 +42,7 @@ void main()
 	char data[1] = {0};
 	if(read(file, data, 1) != 1)
 	{
-		printf("Erorr : Input/output Erorr \n");
+		printf("Error : Input/Output error \n");
 		exit(1);
 	}
 	char data_0 = data[0];
