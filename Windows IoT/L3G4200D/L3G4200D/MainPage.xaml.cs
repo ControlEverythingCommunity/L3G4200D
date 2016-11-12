@@ -20,12 +20,12 @@ namespace L3G4200D
 	/// </summary>
 	public sealed partial class MainPage : Page
 	{
-		private const byte GYRO_I2C_ADDR = 0x68;			// 7-bit I2C address of the L3G4200D
-		private const byte GYRO_REG_CONTROL1 = 0x20;		// Address of the Control register 1
-		private const byte GYRO_REG_CONTROL4 = 0x23;		// Address of the Control register 2
-		private const byte GYRO_REG_X = 0x28;				// Address of the X Axis data register
-		private const byte GYRO_REG_Y = 0x2A;				// Address of the Y Axis data register
-		private const byte GYRO_REG_Z = 0x2C;				// Address of the Z Axis data register
+		private const byte GYRO_I2C_ADDR = 0x68;	// 7-bit I2C address of the L3G4200D
+		private const byte GYRO_REG_CONTROL1 = 0x20;	// Address of the Control register 1
+		private const byte GYRO_REG_CONTROL4 = 0x23;	// Address of the Control register 2
+		private const byte GYRO_REG_X = 0x28;		// Address of the X Axis data register
+		private const byte GYRO_REG_Y = 0x2A;		// Address of the Y Axis data register
+		private const byte GYRO_REG_Z = 0x2C;		// Address of the Z Axis data register
 
 		private I2cDevice I2CGyro;
 		private Timer periodicTimer;
@@ -43,8 +43,8 @@ namespace L3G4200D
 
 		private async void InitI2CGyro()
 		{
-			string aqs = I2cDevice.GetDeviceSelector();					// Get a selector string that will return all I2C controllers on the system
-			var dis = await DeviceInformation.FindAllAsync(aqs);		// Find the I2C bus controller device with our selector string
+			string aqs = I2cDevice.GetDeviceSelector();		// Get a selector string that will return all I2C controllers on the system
+			var dis = await DeviceInformation.FindAllAsync(aqs);	// Find the I2C bus controller device with our selector string
 			if (dis.Count == 0)
 			{
 				Text_Status.Text = "No I2C controllers were found on the system";
@@ -59,8 +59,8 @@ namespace L3G4200D
 				Text_Status.Text = string.Format(
 					"Slave address {0} on I2C Controller {1} is currently in use by " +
 					"another application. Please ensure that no other applications are using I2C.",
-					settings.SlaveAddress,
-					dis[0].Id);
+				settings.SlaveAddress,
+				dis[0].Id);
 				return;
 			}
 
@@ -70,8 +70,8 @@ namespace L3G4200D
 				The first byte is the register address we want to write to.
 				The second byte is the contents that we want to write to the register. 
 			*/
-			byte[] WriteBuf_Control1 = new byte[] { GYRO_REG_CONTROL1, 0x0F };		// 0x0F sets Normal Mode and Output Data Rate = 100 Hz, X, Y, Z axes enabled
-			byte[] WriteBuf_Control4 = new byte[] { GYRO_REG_CONTROL4, 0x30 };		// 0x30 sets Continous update, Data LSB at lower address, FSR 2000dps, Self test disabled, 4-wire interface
+			byte[] WriteBuf_Control1 = new byte[] { GYRO_REG_CONTROL1, 0x0F };	// 0x0F sets Normal Mode and Output Data Rate = 100 Hz, X, Y, Z axes enabled
+			byte[] WriteBuf_Control4 = new byte[] { GYRO_REG_CONTROL4, 0x30 };	// 0x30 sets Continous update, Data LSB at lower address, FSR 2000dps, Self test disabled, 4-wire interface
 
 			// Write the register settings
 			try
@@ -131,8 +131,8 @@ namespace L3G4200D
 
 		private Gyroscope ReadI2CGyro()
 		{
-			byte[] RegAddrBuf = new byte[] { GYRO_REG_X };		// Register address we want to read from
-			byte[] ReadBuf = new byte[1];						// We read 1 byte to get X-Axis LSB register in one read
+			byte[] RegAddrBuf = new byte[] { GYRO_REG_X };	// Register address we want to read from
+			byte[] ReadBuf = new byte[1];			// We read 1 byte to get X-Axis LSB register in one read
 
 			/*
 				Read from the Gyroscope 
@@ -141,7 +141,7 @@ namespace L3G4200D
 			I2CGyro.WriteRead(RegAddrBuf, ReadBuf);
 			
 			byte[] RegAddrBuf1 = new byte[] { GYRO_REG_X + 1 };	// Register address we want to read from
-			byte[] ReadBuf1 = new byte[1];							// We read 1 byte to get X-Axis MSB register in one read
+			byte[] ReadBuf1 = new byte[1];				// We read 1 byte to get X-Axis MSB register in one read
 
 			/*
 				Read from the Gyroscope 
@@ -160,7 +160,7 @@ namespace L3G4200D
 			}
 
 			byte[] RegAddrBuf2 = new byte[] { GYRO_REG_Y };	// Register address we want to read from
-			byte[] ReadBuf2 = new byte[1];						// We read 1 byte to get Y-Axis LSB register in one read
+			byte[] ReadBuf2 = new byte[1];			// We read 1 byte to get Y-Axis LSB register in one read
 
 			/*
 				Read from the Gyroscope 
@@ -169,7 +169,7 @@ namespace L3G4200D
 			I2CGyro.WriteRead(RegAddrBuf2, ReadBuf2);
 			
 			byte[] RegAddrBuf3 = new byte[] { GYRO_REG_Y + 1 };	// Register address we want to read from
-			byte[] ReadBuf3 = new byte[1];							// We read 1 byte to get Y-Axis MSB register in one read
+			byte[] ReadBuf3 = new byte[1];				// We read 1 byte to get Y-Axis MSB register in one read
 
 			/*
 				Read from the Gyroscope
@@ -188,7 +188,7 @@ namespace L3G4200D
 			}
 
 			byte[] RegAddrBuf4 = new byte[] { GYRO_REG_Z };	// Register address we want to read from
-			byte[] ReadBuf4 = new byte[1];						// We read 1 byte to get Z-Axis LSB register in one read
+			byte[] ReadBuf4 = new byte[1];			// We read 1 byte to get Z-Axis LSB register in one read
 
 			/*
 				Read from the Gyroscope 
@@ -198,7 +198,7 @@ namespace L3G4200D
 			I2CGyro.WriteRead(RegAddrBuf4, ReadBuf4);
 			
 			byte[] RegAddrBuf5 = new byte[] { GYRO_REG_Z + 1 };	// Register address we want to read from
-			byte[] ReadBuf5 = new byte[1];							// We read 1 byte to get Z-Axis MSB register in one read
+			byte[] ReadBuf5 = new byte[1];				// We read 1 byte to get Z-Axis MSB register in one read
 
 			/*
 			Read from the Gyroscope 
@@ -225,4 +225,3 @@ namespace L3G4200D
 		}
 	}
 }
-
