@@ -99,4 +99,13 @@ Download (or git pull) the code in Onion Omega. Run the program.
 ```cpp
 $> python L3G4200D.py
 ```
+## Windows 10 IoT Core
+ 
+To download Windows 10 IoT Core, visit Get Started page
+ 
+https://developer.microsoft.com/en-us/windows/iot/GetStarted
+ 
+Download (or git pull) the sample, make a copy on your disk and open the project from Visual Studio.
+
+Note: Your IoT Core device and development PC should be connected to same local Network.
 #####The code output is the raw values of angular acceleration in X, Y and Z axis.
